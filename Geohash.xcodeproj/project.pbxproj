@@ -10,6 +10,8 @@
 		AA1055851F3F10B600155A5E /* Geohash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA10557B1F3F10B500155A5E /* Geohash.framework */; };
 		AA10558A1F3F10B600155A5E /* GeohashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1055891F3F10B600155A5E /* GeohashTests.swift */; };
 		AA10558C1F3F10B600155A5E /* Geohash.h in Headers */ = {isa = PBXBuildFile; fileRef = AA10557E1F3F10B500155A5E /* Geohash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA1055961F3F131400155A5E /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1055951F3F131400155A5E /* Geohash.swift */; };
+		AA1055991F3F139800155A5E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1055981F3F139800155A5E /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		AA1055841F3F10B600155A5E /* GeohashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeohashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1055891F3F10B600155A5E /* GeohashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeohashTests.swift; sourceTree = "<group>"; };
 		AA10558B1F3F10B600155A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA1055951F3F131400155A5E /* Geohash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
+		AA1055981F3F139800155A5E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1055991F3F139800155A5E /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,9 +58,10 @@
 		AA1055711F3F10B500155A5E = {
 			isa = PBXGroup;
 			children = (
-				AA10557D1F3F10B500155A5E /* Geohash */,
-				AA1055881F3F10B600155A5E /* GeohashTests */,
+				AA10557D1F3F10B500155A5E /* Sources */,
+				AA1055881F3F10B600155A5E /* Tests */,
 				AA10557C1F3F10B500155A5E /* Products */,
+				AA1055971F3F139800155A5E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,22 +74,31 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA10557D1F3F10B500155A5E /* Geohash */ = {
+		AA10557D1F3F10B500155A5E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				AA10557E1F3F10B500155A5E /* Geohash.h */,
 				AA10557F1F3F10B500155A5E /* Info.plist */,
+				AA1055951F3F131400155A5E /* Geohash.swift */,
 			);
-			path = Geohash;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		AA1055881F3F10B600155A5E /* GeohashTests */ = {
+		AA1055881F3F10B600155A5E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				AA1055891F3F10B600155A5E /* GeohashTests.swift */,
 				AA10558B1F3F10B600155A5E /* Info.plist */,
 			);
-			path = GeohashTests;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		AA1055971F3F139800155A5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA1055981F3F139800155A5E /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +163,7 @@
 				TargetAttributes = {
 					AA10557A1F3F10B500155A5E = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					AA1055831F3F10B600155A5E = {
@@ -196,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1055961F3F131400155A5E /* Geohash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +277,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -308,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -322,17 +339,19 @@
 		AA1055901F3F10B600155A5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Geohash/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.ynagai.Geohash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -340,12 +359,13 @@
 		AA1055911F3F10B600155A5E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Geohash/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.ynagai.Geohash;
@@ -358,7 +378,8 @@
 		AA1055931F3F10B600155A5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = GeohashTests/Info.plist;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.ynagai.GeohashTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -369,7 +390,8 @@
 		AA1055941F3F10B600155A5E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = GeohashTests/Info.plist;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.ynagai.GeohashTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
