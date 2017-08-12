@@ -15,10 +15,11 @@ import CoreLocation
  where any geohash is guaranteed to be lexiographically larger then start and smaller than end.
  
  - parameter center: The center of the circle.
- - parameter radius: The radius of the circle.
+ - parameter radius: The radius of the circle in kilo meters.
  - returns: An array of geohashes containing a [start, end] pair.
  */
 public func geohashQueries(center: CLLocation, radius: CLLocationDistance) -> [ClosedRange<String>] {
+    let radius = radius * 1000
     let queryBits = max(1, boundingBoxBits(coordinate: center.coordinate, size: radius))
     let geohashPrecision = Int(ceil(Double(queryBits) / Double(Constants.bitsPerChar)))
     let coordinates = boundingBoxCoordinates(center: center.coordinate, radius: radius)
@@ -53,23 +54,23 @@ public func encodeGeohash(location: CLLocation, precision: Int = Constants.geoha
         }
         return precision
     }()
-    let latitudeRange = Double(-90)...90.0
-    let longitudeRange = Double(-180)...180.0
-    do {
+    let latitudeRange = DegreesRange(lowerBound: -90, upperBound: 90)
+    let longitudeRange = DegreesRange(lowerBound: -180, upperBound: 180)
+    return {
         var hash = ""
         var hashValue = 0
         var bits = 0
         var even = true
         while hash.characters.count < precision {
             let value = even ? location.coordinate.longitude : location.coordinate.latitude
-            var range = even ? longitudeRange : latitudeRange
+            let range = even ? longitudeRange : latitudeRange
             let middle = (range.lowerBound + range.upperBound) / 2
             if value > middle {
                 hashValue = (hashValue << 1) + 1
-                range = middle...range.upperBound
+                range.lowerBound = middle
             } else {
                 hashValue = (hashValue << 1) + 0
-                range = range.lowerBound...middle
+                range.upperBound = middle
             }
             even = !even
             if bits < 4 {
@@ -81,7 +82,7 @@ public func encodeGeohash(location: CLLocation, precision: Int = Constants.geoha
             }
         }
         return hash
-    }
+    }()
 }
 
 // MARK: - Internal
@@ -277,5 +278,15 @@ extension String {
         } else {
             return -1
         }
+    }
+}
+
+final class DegreesRange {
+    var lowerBound: CLLocationDegrees
+    var upperBound: CLLocationDegrees
+    
+    init(lowerBound: CLLocationDegrees, upperBound: CLLocationDegrees) {
+        self.lowerBound = lowerBound
+        self.upperBound = upperBound
     }
 }
